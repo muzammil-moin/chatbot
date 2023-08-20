@@ -13,17 +13,20 @@ const SignUp = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorDialogVisible, setErrorDialogVisible] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const onHandleSignUp = () => {
+  const onHandleSignUp = async () => {
     if (email !== "" && password !== "") {
-      createUserWithEmailAndPassword(auth, email, password)
-        .then(() => {
-          console.log("Signup successful");
-        })
-        .catch((err) => {
-          console.log("Signup failed", err.message);
-          setErrorDialogVisible(true);
-        });
+      try {
+        setLoading(true);
+        await createUserWithEmailAndPassword(auth, email, password);
+        console.log("Signup successful");
+      } catch (error) {
+        console.log("Signup failed", error.message);
+        setErrorDialogVisible(true);
+      } finally {
+        setLoading(false);
+      }
     }
   };
 
@@ -51,7 +54,7 @@ const SignUp = ({ navigation }) => {
           placeholder="Enter password"
         />
         <Button mode="contained" style={styles.button} onPress={onHandleSignUp}>
-          Sign Up
+          {loading ? "loading..." : "Sign Up"}
         </Button>
         <View style={styles.signupTextContainer}>
           <Text style={styles.signupText}>Already have an account?</Text>

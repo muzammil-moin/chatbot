@@ -6,7 +6,7 @@ const UserDialog = ({ title, description, onPress, isVisible }) => {
   return (
     <Portal>
       <Dialog visible={isVisible} onDismiss={onPress}>
-        <Dialog.Title>{title}</Dialog.Title>
+        <Dialog>{title}</Dialog>
         <Dialog.Content>
           <Text>{description}</Text>
         </Dialog.Content>
