@@ -63,12 +63,7 @@ const Login = ({ navigation }) => {
           placeholder="Enter password"
           style={styles.input}
         />
-        <Button
-          mode="contained"
-          style={styles.button}
-          onPress={onHandleLogin}
-          disabled={loading}
-        >
+        <Button mode="contained" style={styles.button} onPress={onHandleLogin}>
           {/* {loading ? <ActivityIndicator color="white" /> : "Sign in"} */}
           {loading ? "loading..." : "Sign in"}
         </Button>
