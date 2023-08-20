@@ -69,7 +69,8 @@ const Login = ({ navigation }) => {
           onPress={onHandleLogin}
           disabled={loading}
         >
-          {loading ? <ActivityIndicator color="white" /> : "Sign in"}
+          {/* {loading ? <ActivityIndicator color="white" /> : "Sign in"} */}
+          {loading ? "loading..." : "Sign in"}
         </Button>
         <View
           style={{
@@ -103,13 +104,13 @@ const Login = ({ navigation }) => {
           </TouchableOpacity>
         </View>
       </View>
-      {errorDialogVisible && (
-        <UserDialog
-          description={"There was an error during login. Please try again."}
-          title={"Login Error"}
-          onPress={() => setErrorDialogVisible(false)}
-        />
-      )}
+
+      <UserDialog
+        isVisible={errorDialogVisible}
+        description={"There was an error during login. Please try again."}
+        title={"Login Error"}
+        onPress={() => setErrorDialogVisible(false)}
+      />
     </View>
   );
 };

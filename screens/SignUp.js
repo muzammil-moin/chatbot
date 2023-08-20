@@ -63,12 +63,12 @@ const SignUp = ({ navigation }) => {
           </Text>
         </View>
       </View>
-      {errorDialogVisible && (
-        <UserDialog
-          description={"There was an error during signup. Please try again."}
-          title={"Signup Error"}
-        />
-      )}
+      <UserDialog
+        isVisible={errorDialogVisible}
+        onPress={() => setErrorDialogVisible(true)}
+        description={"There was an error during signup. Please try again."}
+        title={"Signup Error"}
+      />
     </View>
   );
 };
