@@ -6,6 +6,7 @@ import {
   Text,
   TouchableOpacity,
   ActivityIndicator,
+  KeyboardAvoidingView,
 } from "react-native";
 import { TextInput, Button } from "react-native-paper";
 import { signInWithEmailAndPassword } from "firebase/auth";
@@ -105,7 +106,6 @@ const Login = ({ navigation }) => {
         title={"Login Error"}
         onPress={() => setErrorDialogVisible(false)}
       />
-
     </View>
   );
 };
