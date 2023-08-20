@@ -6,8 +6,8 @@ import {
   Text,
   TouchableOpacity,
   ActivityIndicator,
-} from "react-native"; // Import ActivityIndicator
-import { TextInput, Button, Portal } from "react-native-paper";
+} from "react-native";
+import { TextInput, Button } from "react-native-paper";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../config/firebase";
 import { ROUT_NAME } from "../utils/Constant";
@@ -19,11 +19,11 @@ const Login = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorDialogVisible, setErrorDialogVisible] = useState(false);
-  const [loading, setLoading] = useState(false); // Add loading state
+  const [loading, setLoading] = useState(false);
 
   const onHandleLogin = () => {
     if (email !== "" && password !== "") {
-      setLoading(true); // Set loading to true when login starts
+      setLoading(true);
       signInWithEmailAndPassword(auth, email, password)
         .then(() => {
           console.log("Login successful");
@@ -33,7 +33,7 @@ const Login = ({ navigation }) => {
           setErrorDialogVisible(true);
         })
         .finally(() => {
-          setLoading(false); // Set loading back to false after login attempt
+          setLoading(false);
         });
     }
   };
@@ -64,7 +64,6 @@ const Login = ({ navigation }) => {
           style={styles.input}
         />
         <Button mode="contained" style={styles.button} onPress={onHandleLogin}>
-          {/* {loading ? <ActivityIndicator color="white" /> : "Sign in"} */}
           {loading ? "loading..." : "Sign in"}
         </Button>
         <View
@@ -106,6 +105,7 @@ const Login = ({ navigation }) => {
         title={"Login Error"}
         onPress={() => setErrorDialogVisible(false)}
       />
+
     </View>
   );
 };
