@@ -163,7 +163,7 @@ const SignUp = ({ navigation }) => {
       <View style={styles.form}>
         <Text style={styles.title}>Sign Up</Text>
         <TextInput
-          mode="flat" // Use flat input style
+          mode="flat"
           keyboardType="email-address"
           textContentType="emailAddress"
           autoFocus={true}
@@ -173,7 +173,7 @@ const SignUp = ({ navigation }) => {
           placeholder="Enter email"
         />
         <TextInput
-          mode="flat" // Use flat input style
+          mode="flat"
           secureTextEntry={true}
           textContentType="password"
           value={password}
